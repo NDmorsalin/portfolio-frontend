@@ -3,9 +3,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const fetchAdmin = createAsyncThunk('admin/fetchAdmin', async () => {
-    const response = await axios.get('localhost:4000/api/v1/admin');
-    console.log(response);
-    return response;
+    const response = await axios.get('http://localhost:4000/api/v1/admin');
+    console.log({ response });
+    return response.data;
 });
 
 export const adminSlice = createSlice({
@@ -18,18 +18,17 @@ export const adminSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchAdmin.pending, (state) => {
             state.isLoading = true;
-            state.user = {};
+            state.admin = {};
             state.error = null;
         });
         builder.addCase(fetchAdmin.fulfilled, (state, actions) => {
-            console.log(actions.payload);
-            state.isLoading = true;
-            state.user = actions.payload;
+            state.isLoading = false;
+            state.admin = actions.payload;
             state.error = null;
         });
         builder.addCase(fetchAdmin.rejected, (state, actions) => {
             state.isLoading = false;
-            state.user = {};
+            state.admin = {};
             state.error = actions.payload;
         });
     },
