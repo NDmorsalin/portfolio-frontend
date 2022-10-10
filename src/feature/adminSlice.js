@@ -4,7 +4,6 @@ import axios from 'axios';
 
 export const fetchAdmin = createAsyncThunk('admin/fetchAdmin', async () => {
     const response = await axios.get('http://localhost:4000/api/v1/admin');
-    console.log({ response });
     return response.data;
 });
 

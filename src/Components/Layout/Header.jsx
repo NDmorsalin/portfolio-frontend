@@ -1,20 +1,20 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useRef, useState } from 'react';
-import { FaBars, FaPlus } from 'react-icons/fa';
+import { FaBars, FaHandshake, FaPlus } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import logoDark from '../../asset/logo-dark.svg';
 import logoLight from '../../asset/logo-light.svg';
 import useTheme from '../../Hooks/useTheme';
-import Button from '../Button/Button';
+import ButtonLink from '../Button/ButtonLink';
 import ThemeButton from '../Button/ThemeButton';
 
 const navLinks = [
     {
-        path: '/',
+        path: '#home',
         text: 'Home',
     },
     {
-        path: '/service',
+        path: '#service',
         text: 'Service',
     },
     {
@@ -22,8 +22,8 @@ const navLinks = [
         text: 'Contact',
     },
     {
-        path: '/projects',
-        text: 'All Project',
+        path: '#projects',
+        text: 'Projects',
     },
 ];
 
@@ -66,7 +66,7 @@ function Header() {
             ref={stakeRef}
             // style={{ top: -y }}
             className="bg-transparent dark:bg-slate-700 w-full duration-500  z-50 top-0 absolute ">
-            <header className="lg:container mx-auto px-8 dark:text-slate-300 flex justify-between items-center">
+            <header className="lg:container mx-auto px-8 flex justify-between items-center">
                 <div className="flex justify-between items-center w-full md:w-auto py-2 md:py-0">
                     <NavLink to="/" className="flex  items-center lg:gap-4 gap-2">
                         <div className="w-12">
@@ -98,20 +98,33 @@ function Header() {
                 {/* //?desktop nav start */}
 
                 <nav className="hidden md:flex justify-center items-center lg:gap-4 md:gap-2">
-                    {navLinks.map(({ path, text }) => (
-                        <NavLink
-                            key={text}
-                            to={path}
-                            className="text-lg font-medium inline-block md:py-5 md:px-1 lg:py-6 lg:px-2 ">
-                            {text}
-                        </NavLink>
-                    ))}
+                    {navLinks.map(({ path, text }) =>
+                        path.includes('#') ? (
+                            <a
+                                key={text}
+                                href={path}
+                                className="text-lg font-medium inline-block md:py-5 md:px-1 lg:py-6 lg:px-2 ">
+                                {text}
+                            </a>
+                        ) : (
+                            <NavLink
+                                key={text}
+                                to={path}
+                                className="text-lg font-medium inline-block md:py-5 md:px-1 lg:py-6 lg:px-2 ">
+                                {text}
+                            </NavLink>
+                        )
+                    )}
                 </nav>
 
                 {/* theme button */}
                 <div className="hidden md:flex justify-center items-center gap-4 ">
                     {' '}
-                    <Button text="Hire Me" />
+                    <ButtonLink
+                        text="Hire Me"
+                        path="/hire"
+                        icon={<FaHandshake className="text-amber-300 text-xl" />}
+                    />
                     <ThemeButton handleClick={handleClick} isToggleOn={isToggleOn} />
                 </div>
 
@@ -128,7 +141,7 @@ function Header() {
                             <NavLink
                                 key={text}
                                 to={path}
-                                className="text-lg group font-medium block px-8 py-3 relative after:bg-gray-300 dark:after:bg-slate-700  after:w-0 hover:after:w-full after:duration-500 after:-z-10 z-10 duration-500 after:h-full after:left-0 after:absolute after:top-0">
+                                className="text-lg group font-medium block px-8 py-4 relative after:bg-gray-300 dark:after:bg-slate-700  after:w-0 hover:after:w-full after:duration-500 after:-z-10 z-10 duration-500 after:h-full after:left-0 after:absolute after:top-0">
                                 {text}
                                 {/* 
                                 <div className="absolute w-0 group-hover:w-full group-hover:text-white duration-500 group-hover:bg-slate-800  h-full left-0 top-0 -z-10" /> */}
@@ -136,7 +149,7 @@ function Header() {
                         ))}
 
                         <div className="md:hidden flex justify-center gap-4">
-                            <Button text="Hire Me" />
+                            <ButtonLink text="Hire Me" path="/hire" icon={<FaHandshake />} />
                             <ThemeButton handleClick={handleClick} isToggleOn={isToggleOn} />
                         </div>
                     </nav>
