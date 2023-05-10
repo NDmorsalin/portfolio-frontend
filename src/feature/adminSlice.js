@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const fetchAdmin = createAsyncThunk('admin/fetchAdmin', async () => {
-    const response = await axios.get('http://localhost:4000/api/v1/admin');
+    const response = await axios.get('http://localhost:4000/api/v1/admin?resultPerPage=4');
     return response.data;
 });
 

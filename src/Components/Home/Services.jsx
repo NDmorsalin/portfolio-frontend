@@ -12,8 +12,6 @@ import backend from '../../asset/backend.json';
 import frontend from '../../asset/frontend.json';
 import uiux from '../../asset/uiux.json';
 
-import Circle from '../Circle';
-
 const services = [
     {
         title: 'UI/UX Design',
@@ -62,7 +60,7 @@ function Services({ admin }) {
                                     prev: 'splide__arrow--prev hidden',
                                     next: 'splide__arrow--next hidden',
                                 },
-                                type: 'loop',
+                                // type: 'loop',
                                 autoScroll: {
                                     speed: 1,
                                 },
@@ -71,7 +69,7 @@ function Services({ admin }) {
                                 perMove: 1,
                                 focus: 'center',
                                 perPage: 3,
-                                autoplay: true,
+                                // autoplay: true,
                                 lazyLoad: 'nearby',
                                 breakpoints: {
                                     480: {
@@ -91,21 +89,7 @@ function Services({ admin }) {
                                     <SplideSlide key={service.title} className=" items-stretch">
                                         <div className="relative z-0 overflow-hidden">
                                             <div className="dark:bg-slate-700 p-5 rounded  group ">
-                                                <Circle
-                                                    w="md:w-[25rem] w-[15rem]"
-                                                    h="md:h-[25rem] h-[15rem]"
-                                                    left="md:group-hover:-left-[15rem] group-hover:-left-[10rem] -left-[50rem]"
-                                                    top="md:group-hover:-top-[15rem] group-hover:-top-[10rem] -top-[50rem]"
-                                                    z="z-1"
-                                                />
-                                                <Circle
-                                                    w="md:w-[25rem] w-[15rem]"
-                                                    h="md:h-[25rem] h-[15rem]"
-                                                    right="group-hover:-right-[10rem] md:group-hover:-right-[15rem] -right-[50rem]"
-                                                    bottom="group-hover:-bottom-[10rem] md:group-hover:-bottom-[15rem] -bottom-[50rem]"
-                                                    z="z-0"
-                                                />
-                                                <div className="relative z-30">
+                                                <div className="relative z-50">
                                                     <Player
                                                         autoplay
                                                         loop

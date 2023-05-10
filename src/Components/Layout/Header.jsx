@@ -1,33 +1,38 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useRef, useState } from 'react';
 import { FaBars, FaHandshake, FaPlus } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import logoDark from '../../asset/logo-dark.svg';
 import logoLight from '../../asset/logo-light.svg';
 import useTheme from '../../Hooks/useTheme';
 import ButtonLink from '../Button/ButtonLink';
 import ThemeButton from '../Button/ThemeButton';
 
-const navLinks = [
-    {
-        path: '#home',
-        text: 'Home',
-    },
-    {
-        path: '#service',
-        text: 'Service',
-    },
-    {
-        path: '/contact',
-        text: 'Contact',
-    },
-    {
-        path: '#projects',
-        text: 'Projects',
-    },
-];
-
 function Header() {
+    const { pathname } = useLocation();
+    const navLinks =
+        pathname === '/'
+            ? [
+                  {
+                      path: '#service',
+                      text: 'Service',
+                  },
+                  {
+                      path: '#projects',
+                      text: 'Projects',
+                  },
+                  {
+                      path: '#contact',
+                      text: 'Contact',
+                  },
+              ]
+            : [
+                  {
+                      path: '/',
+                      text: 'Home',
+                  },
+              ];
+
     const { handleClick, isToggleOn } = useTheme();
     const [toggle, setToggle] = useState(false);
     // const [y, setY] = useState(0);

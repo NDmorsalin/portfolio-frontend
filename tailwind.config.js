@@ -1,6 +1,5 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable prettier/prettier */
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin')
 const labelGroup = require('tailwindcss-labeled-groups')
@@ -37,15 +36,12 @@ module.exports = {
     plugins: [
         labelGroup(['projectCard', 'card-header' ]),
         plugin(({ matchUtilities,addBase, addComponents, addUtilities, theme }) => {
-            matchUtilities(
-                {
-                  nd: (value) => ({
-                    tabSize: value
-                  }),
+            addComponents({
+                '.rotate-card':{
+                    transform: 'rotateX(90deg) rotateY(-5deg) perspective(2000px)'
                 },
-                { values: theme('myName') }
-              )
-
+                
+            })
             addUtilities({
                 '.preserve-3d':{
                     transformStyle: 'preserve-3d'
@@ -55,7 +51,7 @@ module.exports = {
                     transform: 'rotateY(-135deg)'
                 },
                 '.-rotate-x-85':{
-                    transform: 'rotateX(85deg) perspective(2000px)'
+                    transform: 'rotateX(85deg) rotateY(45deg) perspective(2000px)'
                 },
                 
                 '.perspective-none':{

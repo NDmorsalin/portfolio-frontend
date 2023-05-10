@@ -36,7 +36,7 @@ function Projects({ admin }) {
                     </div>
                 </div>
                 <div className="flex justify-center pt-8">
-                    <Button path="/projects" text="View all projects" />
+                    <Button path="/adminProjects" text="View all projects" />
                 </div>
             </div>
             <Divider pt="pt-8" />

@@ -2,14 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@splidejs/react-splide/css';
-
-@import '@splidejs/react-splide/css/skyblue';
-@import '@splidejs/react-splide/css/sea-green';
-
-@import '@splidejs/react-splide/css/core';
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
 @layer base {
     html {
         overflow-x: hidden;

@@ -4,12 +4,10 @@ import { FaCode, FaGithub } from 'react-icons/fa';
 import Button from '../Button/ButtonLink';
 
 function ProjectCard({ project }) {
-    console.log(project);
-    console.log();
     return (
-        <div className="bg-slate-800  group-projectCard">
+        <div className="bg-slate-800  group-projectCard rounded-lg">
             <div className="perspective-2k relative preserve-3d duration-1000 min-h-[320px]  w-[300px] ">
-                <div className="group-projectCard-hover:-rotate-x-85 transform origin-top w-full h-full min-h-[320px] relative z-30 duration-1000 rounded-lg bg-cyan-800 flex justify-center items-center">
+                <div className="group-projectCard-hover:rotate-card  transform origin-top-left w-full h-full min-h-[320px] relative z-30 duration-1000 rounded-lg bg-cyan-800 flex justify-center items-center">
                     {/* <Player
                         src={frontend}
                         className=""
